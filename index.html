@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Gator Hoops</title>
+  <meta name="theme-color" content="#0021A5"/>
+  <link rel="stylesheet" href="style.css?v=4"/>
+</head>
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img class="brandmark" alt="UF Gators" src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Florida_Gators_gator_logo.svg">
+        <h1>Gator Hoops</h1>
+      </div>
+      <div class="controls">
+        <label class="meta" style="color:#eef">Team</label>
+        <select id="gender">
+          <option value="mens-college-basketball" selected>Men's</option>
+          <option value="womens-college-basketball">Women's</option>
+        </select>
+        <button id="refreshBtn" type="button" title="Refresh">↻ Refresh</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Brand logos strip -->
+  <div class="brands">
+    <img alt="UF" src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Florida_Gators_gator_logo.svg">
+    <img alt="SEC" src="https://upload.wikimedia.org/wikipedia/commons/6/65/Southeastern_Conference_logo.svg">
+    <img alt="NCAA" src="https://upload.wikimedia.org/wikipedia/commons/4/43/NCAA_logo.svg">
+  </div>
+
+  <!-- Championship hero -->
+  <section class="hero" aria-label="Championship & Highlights">
+    <div class="carousel">
+      <img id="heroImg" alt="Florida Gators Highlights"/>
+      <div class="shade"></div>
+      <div class="caption">
+        <div>
+          <div class="badge">Go Gators 🐊</div>
+          <div class="kicker">Photos & highlights — tap Prev/Next</div>
+        </div>
+        <div class="car-ctrls">
+          <button id="prevBtn" class="pill gray" type="button"><span class="pill-dot"></span>Prev</button>
+          <button id="nextBtn" class="pill gray" type="button"><span class="pill-dot"></span>Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabs -->
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button type="button" class="tab" id="tab-schedule" aria-controls="panel-schedule" aria-selected="true">Schedule</button>
+    <button type="button" class="tab" id="tab-roster"   aria-controls="panel-roster"   aria-selected="false">Roster</button>
+    <button type="button" class="tab" id="tab-props"    aria-controls="panel-props"    aria-selected="false">Props (Fun)</button>
+    <button type="button" class="tab" id="tab-stats"    aria-controls="panel-stats"    aria-selected="false">Stats</button>
+    <button type="button" class="tab" id="tab-news"     aria-controls="panel-news"     aria-selected="false">News</button>
+    <button type="button" class="tab" id="tab-tickets"  aria-controls="panel-tickets"  aria-selected="false">Tickets</button>
+  </nav>
+
+  <main>
+    <!-- Schedule -->
+    <section id="panel-schedule" class="section active" role="tabpanel" aria-labelledby="tab-schedule">
+      <button id="addAllBtn" class="allcal-btn" type="button">Add All Games to Calendar</button>
+      <div id="allcal-menu" class="allcal-menu">
+        <div class="menu">
+          <a id="allcal-apple" href="#"> Apple/Outlook (.ics)</a>
+          <a id="allcal-google" href="https://calendar.google.com/calendar/u/0/r/settings/import" target="_blank" rel="noopener">Google Calendar (Import)</a>
+        </div>
+      </div>
+      <div id="nextGame" class="next-wrap"></div>
+      <div id="scheduleList" class="grid"></div>
+    </section>
+
+    <!-- Roster -->
+    <section id="panel-roster" class="section" role="tabpanel" aria-labelledby="tab-roster">
+      <div id="rosterList" class="grid"></div>
+    </section>
+
+    <!-- Props -->
+    <section id="panel-props" class="section" role="tabpanel" aria-labelledby="tab-props">
+      <div class="note">Props are for entertainment only; saved locally.</div>
+      <div id="propsWrap" class="grid"></div>
+    </section>
+
+    <!-- Stats -->
+    <section id="panel-stats" class="section" role="tabpanel" aria-labelledby="tab-stats">
+      <div class="grid">
+        <div class="card">
+          <h3 style="margin:0 0 10px 0">Leaders</h3>
+          <div id="leaders" class="statgrid"></div>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 10px 0">Team Points by Game</h3>
+          <canvas id="teamPtsChart" height="220"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- News -->
+    <section id="panel-news" class="section" role="tabpanel" aria-labelledby="tab-news">
+      <div id="newsList" class="grid"></div>
+    </section>
+
+    <!-- Tickets -->
+    <section id="panel-tickets" class="section" role="tabpanel" aria-labelledby="tab-tickets">
+      <div class="grid" id="ticketsList"></div>
+      <div class="card">
+        <h3 style="margin:0 0 8px 0">Popular Marketplaces</h3>
+        <div class="grid">
+          <a class="card" target="_blank" rel="noopener" href="https://seatgeek.com/search?search=Florida%20Gators%20Basketball">SeatGeek — Florida Gators Basketball</a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.ticketmaster.com/search?q=Florida%20Gators%20Basketball">Ticketmaster — Florida Gators Basketball</a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.vividseats.com/florida-gators-basketball-tickets/performer/447">Vivid Seats — Florida Gators Basketball</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Not affiliated with UF. Data from public ESPN JSON. Props & predictions are for fun only.</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js?v=4"></script>
+</body>
+</html>
